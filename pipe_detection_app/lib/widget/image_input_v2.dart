@@ -45,7 +45,8 @@ class ImageInputV2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    XFile? seletedimg = Provider.of<ImageProviderr>(context).getImage;
+    print("\niamge input called\n\n");
+    // XFile? seletedimg = Provider.of<ImageProviderr>(context).getImage;
     return Row(
       children: <Widget>[
         InkWell(
@@ -107,18 +108,36 @@ class ImageInputV2 extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(width: 1, color: Colors.grey),
             ),
-            child: (seletedimg != null)
-                ? Image.file(
-                    File(seletedimg.path),
-                    errorBuilder: (BuildContext context, Object error,
-                            StackTrace? stackTrace) =>
-                        const Center(
-                            child: Text('This image type is not supported')),
-                  )
-                : const Text(
-                    'Tap to select image',
-                    textAlign: TextAlign.center,
-                  ),
+            child:
+                //  (seletedimg != null)
+                //     ? Image.file(
+                //         File(seletedimg.path),
+                //         errorBuilder: (BuildContext context, Object error,
+                //                 StackTrace? stackTrace) =>
+                //             const Center(
+                //                 child: Text('This image type is not supported')),
+                //       )
+                //     : const Text(
+                //         'Tap to select image',
+                //         textAlign: TextAlign.center,
+                //       ),
+                Consumer<ImageProviderr>(
+              builder: (context, imageProviderr, child) {
+                return (imageProviderr.getImage != null)
+                    ? Image.file(
+                        File(imageProviderr.getImage!.path),
+                        errorBuilder: (BuildContext context, Object error,
+                                StackTrace? stackTrace) =>
+                            const Center(
+                                child:
+                                    Text('This image type is not supported')),
+                      )
+                    : const Text(
+                        'Tap to select image',
+                        textAlign: TextAlign.center,
+                      );
+              },
+            ),
             alignment: Alignment.center,
           ),
         ),

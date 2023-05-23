@@ -46,7 +46,9 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              
+                            },
                             icon: const Icon(Icons.wifi_protected_setup_sharp),
                             label: const Text("Detect Pipe")),
                       ],
