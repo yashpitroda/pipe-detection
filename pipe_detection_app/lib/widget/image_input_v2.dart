@@ -2,18 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pipe_detection_app/provider/image_provider.dart';
 import 'package:provider/provider.dart';
 
-class ImageInput extends StatefulWidget {
-  final Function onselectImage;
+import '../provider/image_provider.dart';
 
-  const ImageInput({super.key, required this.onselectImage});
-  @override
-  _ImageInputState createState() => _ImageInputState();
-}
-
-class _ImageInputState extends State<ImageInput> {
+class ImageInputV2 extends StatelessWidget {
+  ImageInputV2({Key? key}) : super(key: key);
   Icon iconGallery = const Icon(Icons.image);
   Icon iconCamera = const Icon(Icons.camera);
   Icon iconRemove = const Icon(Icons.delete);
@@ -43,7 +37,7 @@ class _ImageInputState extends State<ImageInput> {
     }
   }
 
-  void _emptyIMGBox() {
+  void _emptyIMGBox({required BuildContext context}) {
     finalImage = null;
     Provider.of<ImageProviderr>(context, listen: false)
         .setImage(img: finalImage);
@@ -51,7 +45,7 @@ class _ImageInputState extends State<ImageInput> {
 
   @override
   Widget build(BuildContext context) {
-    // XFile? seletedimg = Provider.of<ImageProviderr>(context).getImage;
+    XFile? seletedimg = Provider.of<ImageProviderr>(context).getImage;
     return Row(
       children: <Widget>[
         InkWell(
@@ -96,7 +90,7 @@ class _ImageInputState extends State<ImageInput> {
                             children: [
                               IconButton(
                                 icon: iconRemove,
-                                onPressed: () => _emptyIMGBox(),
+                                onPressed: () => _emptyIMGBox(context: context),
                               ),
                               const Text('Delete'),
                             ],
@@ -113,47 +107,24 @@ class _ImageInputState extends State<ImageInput> {
             decoration: BoxDecoration(
               border: Border.all(width: 1, color: Colors.grey),
             ),
-            child: null,
-            // (seletedimg != null)
-            //     ? Image.file(
-            //         File(seletedimg.path),
-            //         errorBuilder: (BuildContext context, Object error,
-            //                 StackTrace? stackTrace) =>
-            //             const Center(
-            //                 child: Text('This image type is not supported')),
-            //       )
-            //     : const Text(
-            //         'Tap to select image',
-            //         textAlign: TextAlign.center,
-            //       ),
+            child: (seletedimg != null)
+                ? Image.file(
+                    File(seletedimg.path),
+                    errorBuilder: (BuildContext context, Object error,
+                            StackTrace? stackTrace) =>
+                        const Center(
+                            child: Text('This image type is not supported')),
+                  )
+                : const Text(
+                    'Tap to select image',
+                    textAlign: TextAlign.center,
+                  ),
             alignment: Alignment.center,
           ),
         ),
         const SizedBox(
           width: 20,
         ),
-        // Expanded(
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.stretch,
-        //     children: [
-        //       ElevatedButton.icon(
-        //           icon: iconGallery,
-        //           label: const Text('from Gallery'),
-        //           onPressed: () => _onImageButtonPressed(ImageSource.gallery,
-        //               context: context)),
-        //       ElevatedButton.icon(
-        //           icon: iconCamera,
-        //           label: const Text('from camara'),
-        //           onPressed: () => _onImageButtonPressed(ImageSource.camera,
-        //               context: context)),
-        //       ElevatedButton.icon(
-        //         icon: iconRemove,
-        //         label: const Text('remove'),
-        //         onPressed: () => _emptyIMGBox(),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

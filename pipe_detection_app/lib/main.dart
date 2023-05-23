@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pipe_detection_app/home_screen.dart';
+import 'package:pipe_detection_app/provider/image_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'palette.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +15,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       scrollBehavior: const ScrollBehavior(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext ctx) => ImageProviderr(),
+        ),
+      ],
+      child: MaterialApp(
+        scrollBehavior: const ScrollBehavior(
             androidOverscrollIndicator: AndroidOverscrollIndicator.stretch),
         debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-   theme: ThemeData(
+        title: 'Flutter Demo',
+        theme: ThemeData(
           cardTheme: const CardTheme(
-              margin: EdgeInsets.symmetric(
-                  horizontal: 0, vertical:3)),
+              margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3)),
           primarySwatch: generateMaterialColor(Palette.primaryColor),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             extendedTextStyle: Theme.of(context).textTheme.button,
@@ -52,11 +58,12 @@ class MyApp extends StatelessWidget {
           //     surface: Palette.fontWhiteColor,
           //     onSurface: Palette.fontBlackColor),
         ),
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.amberAccent),
-      //   useMaterial3: true,
-      // ),
-      home: HomeScreen(),
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.amberAccent),
+        //   useMaterial3: true,
+        // ),
+        home: HomeScreen(),
+      ),
     );
   }
 }

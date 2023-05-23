@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pipe_detection_app/widget/image_input_v2.dart';
 import 'package:provider/provider.dart';
 import 'widget/image_input.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         centerTitle: true,
         title: const Text("Pipe Detection App"),
         bottom: PreferredSize(
@@ -36,9 +37,7 @@ class HomeScreen extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     // color: Colors.pink,
-                    child: ImageInput(
-                      onselectImage: _selectimageHandler,
-                    ),
+                    child: ImageInputV2(),
                   ),
                 ),
                 Expanded(
