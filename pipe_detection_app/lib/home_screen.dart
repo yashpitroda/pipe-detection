@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pipe_detection_app/widget/image_input_v2.dart';
 import 'package:provider/provider.dart';
-import 'widget/image_input.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -47,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         ElevatedButton.icon(
                             onPressed: () {
-                              
+
                             },
                             icon: const Icon(Icons.wifi_protected_setup_sharp),
                             label: const Text("Detect Pipe")),

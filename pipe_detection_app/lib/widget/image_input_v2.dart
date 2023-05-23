@@ -28,9 +28,9 @@ class ImageInputV2 extends StatelessWidget {
           return;
         }
         finalImage = pickedFile;
-        // widget.onselectImage(finalImage);
         Provider.of<ImageProviderr>(context, listen: false)
             .setImage(img: finalImage);
+        Navigator.pop(context);
       } catch (e) {
         print(e);
       }
@@ -41,12 +41,12 @@ class ImageInputV2 extends StatelessWidget {
     finalImage = null;
     Provider.of<ImageProviderr>(context, listen: false)
         .setImage(img: finalImage);
+    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     print("\niamge input called\n\n");
-    // XFile? seletedimg = Provider.of<ImageProviderr>(context).getImage;
     return Row(
       children: <Widget>[
         InkWell(
