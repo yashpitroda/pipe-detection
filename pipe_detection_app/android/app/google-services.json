@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143496518364",
+    "project_id": "pipe-detection",
+    "storage_bucket": "pipe-detection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143496518364:android:6ddc4fe401ca799fd0b219",
+        "android_client_info": {
+          "package_name": "com.example.pipe_detection_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143496518364-287omqfu8serncqou404k9nefcelrj8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiDq5Per44fNfomOjWcaaxMf0MgnuU5so"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143496518364-287omqfu8serncqou404k9nefcelrj8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

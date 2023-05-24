@@ -123,9 +123,9 @@ class ImageInputV2 extends StatelessWidget {
                 //       ),
                 Consumer<ImageProviderr>(
               builder: (context, imageProviderr, child) {
-                return (imageProviderr.getImage != null)
+                return (imageProviderr.getSelectedImage != null)
                     ? Image.file(
-                        File(imageProviderr.getImage!.path),
+                        File(imageProviderr.getSelectedImage!.path),
                         errorBuilder: (BuildContext context, Object error,
                                 StackTrace? stackTrace) =>
                             const Center(

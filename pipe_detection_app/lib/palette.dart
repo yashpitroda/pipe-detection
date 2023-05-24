@@ -35,7 +35,7 @@ Color shadeColor(Color color, double factor) => Color.fromRGBO(
     1);
 
 class Palette {
-  static const Color primaryColor = Color(0xFF4285F4);
+  static const Color primaryColor = Color(0xFF4285F4); //E57C23//4285F4
   static const Color redColor = Color(0xFFE60023);
   static const Color redDarkColor = Color(0xFFDB4437);
   static const Color greenColor = Color(0xFF0F9D58);

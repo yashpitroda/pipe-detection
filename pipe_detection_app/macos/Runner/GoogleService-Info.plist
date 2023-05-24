@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>143496518364-jed47vk4m1a8dnu4pg888fs7fbujn6kp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.143496518364-jed47vk4m1a8dnu4pg888fs7fbujn6kp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDTCXlp65-U4pTPv7UYVEkGBagbBOAp4EU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>143496518364</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.pipeDetectionApp.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>pipe-detection</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pipe-detection.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:143496518364:ios:89d26d9f9178ef8cd0b219</string>
+</dict>
+</plist>
