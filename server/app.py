@@ -54,7 +54,7 @@ def uploadImage():
     print(id)
     return resp,200
 
-@app.route('/',methods=['POST'])
+@app.route('/',methods=['GET'])
 def index():
     return "hello"
 
