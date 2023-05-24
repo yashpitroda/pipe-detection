@@ -15,7 +15,7 @@ def image_to_base64(image):
     return base64_string
     
  
-async def pipe_detection_algo(image):
+def pipe_detection_algo(image):
     output=image
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     imgBlur = cv2.GaussianBlur(gray, (5, 5), 16) #16 or 1 // ADD GAUSSIAN BLUR

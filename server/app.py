@@ -32,19 +32,19 @@ database = client.get_database('pipe_detection') #create or inislize database
 #------------------------
 
 @app.route('/detectPipe',methods=['POST'])
-async def detectImage():
+def detectImage():
     
     value=request.get_json()
     base64_string = value["image"]
     requestImage=service.base64_to_image(base64_string)
-    op,cnt= await service.pipe_detection_algo(requestImage)
+    op,cnt=  service.pipe_detection_algo(requestImage)
     response_base64_string=service.image_to_base64(op)
     print(f'count is :${cnt}')
     res={'payload':{ "base64imageStirng":str(response_base64_string),"count":str(cnt),},}
     return jsonify(res),200
 
 @app.route('/uploadImage',methods=['POST'])
-async def uploadImage():
+def uploadImage():
     _value=request.get_json()
     _inputImageUrl = _value["inputImageUrl"]
     _outputImageUrl = _value["outputImageUrl"]
