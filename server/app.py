@@ -44,7 +44,7 @@ async def detectImage():
     return jsonify(res),200
 
 @app.route('/uploadImage',methods=['POST'])
-def uploadImage():
+async def uploadImage():
     _value=request.get_json()
     _inputImageUrl = _value["inputImageUrl"]
     _outputImageUrl = _value["outputImageUrl"]
