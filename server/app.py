@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 from flask import Flask,request,jsonify
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
-from bson.objectid import ObjectId #_id value is genrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import pymongo
 import base64
