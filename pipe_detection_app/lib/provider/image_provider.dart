@@ -129,11 +129,8 @@ class ImageProviderr with ChangeNotifier {
     //selectedImage upload on firebase
     String inputImageUrl =
         await uploadImageOnFirebaseStorage(uploadImage: selectedImage!);
-    XFile vb = await Util.convertBase64ToXFIle(responseBase64Image!);
-    // String outputImageUrl=await uploadBase64ImageOnFirebaseStorage(base64imageStirng: responseBase64Image!);
-    print("mnmnmn");
-    String outputImageUrl =
-        await uploadImageOnFirebaseStorage(uploadImage: responseImage!);
+    String outputImageUrl = await uploadBase64ImageOnFirebaseStorage(
+        base64imageStirng: responseBase64Image!);
 
     //now store in database
     final url = Uri.parse(Util.API_URL + "/uploadImage");
