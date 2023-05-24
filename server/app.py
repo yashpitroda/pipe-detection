@@ -54,6 +54,12 @@ def uploadImage():
     print(id)
     return resp,200
 
+@app.route('/',methods=['POST'])
+def index():
+    return "hello"
+
+
+
 # @app.errorhandler(404)
 # def not_found(error=None):
 #     massage={
