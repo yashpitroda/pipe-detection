@@ -13,6 +13,8 @@ import '../services/util.dart';
 
 class ImageProviderr with ChangeNotifier {
   bool isLoading = false;
+  bool isUploadImageLoading = false;
+
   XFile? selectedImage;
   XFile? responseImage;
   String? responseBase64Image;
@@ -20,6 +22,10 @@ class ImageProviderr with ChangeNotifier {
 
   bool get getIsLoading {
     return isLoading;
+  }
+
+  bool get getisUploadImageLoading {
+    return isUploadImageLoading;
   }
 
   XFile? get getSelectedImage {
@@ -46,6 +52,13 @@ class ImageProviderr with ChangeNotifier {
     notifyListeners();
   }
 
+  void emptyResponse() {
+    responseBase64Image = null;
+    responseCount = null;
+    responseImage = null;
+    notifyListeners();
+  }
+
   void setImage({required XFile? img}) {
     selectedImage = img;
     notifyListeners();
@@ -57,9 +70,9 @@ class ImageProviderr with ChangeNotifier {
     return file;
   }
 
-  Future<void> detectPipe() async {
+  Future<bool> detectPipe() async {
     if (selectedImage == null) {
-      return;
+      return false;
     }
     isLoading = true;
     notifyListeners();
@@ -77,7 +90,7 @@ class ImageProviderr with ChangeNotifier {
       ),
     );
     if (response.body == 'null') {
-      return;
+      return false;
     }
 
     final responseData = json.decode(response.body);
@@ -88,6 +101,7 @@ class ImageProviderr with ChangeNotifier {
     responseCount = resMap['count'];
     isLoading = false;
     notifyListeners();
+    return true;
   }
 
   Future<String> uploadImageOnFirebaseStorage(
@@ -124,7 +138,7 @@ class ImageProviderr with ChangeNotifier {
         responseCount == null) {
       return;
     }
-    isLoading = true;
+    isUploadImageLoading = true;
     notifyListeners();
 
     //selectedImage upload on firebase
@@ -151,11 +165,8 @@ class ImageProviderr with ChangeNotifier {
     }
 
     final responseData = json.decode(response.body);
-    // final resMap = responseData['payload'];
-    // responseBase64Image = resMap['base64imageStirng'];
-    // responseCount = resMap['count'];
     print(responseData);
-    isLoading = false;
+    isUploadImageLoading = false;
     notifyListeners();
   }
 

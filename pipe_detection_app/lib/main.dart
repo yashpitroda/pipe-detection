@@ -44,8 +44,10 @@ class MyApp extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3)),
             primarySwatch: generateMaterialColor(Palette.primaryColor),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
-              extendedTextStyle: Theme.of(context).textTheme.button,
-              elevation: 3,
+              backgroundColor: Colors.amber,
+              foregroundColor: Colors.black,
+              extendedTextStyle: Theme.of(context).textTheme.titleSmall,
+              elevation: 2,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6)),
             ),
@@ -77,7 +79,7 @@ class MyApp extends StatelessWidget {
           // ),
           home: HomeScreen(),
           routes: {
-            AnalyticsScreen.routeName: (context) => const AnalyticsScreen(),
+            AnalyticsScreen.routeName: (context) =>  AnalyticsScreen(),
           }),
     );
   }

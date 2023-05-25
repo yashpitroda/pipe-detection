@@ -49,7 +49,7 @@ def uploadImage():
     _inputImageUrl = _value["inputImageUrl"]
     _outputImageUrl = _value["outputImageUrl"]
     _count = _value["count"]
-    id=database.userm.insert_one({'inputImageUrl':_inputImageUrl,'outputImageUrl':_outputImageUrl,'count':_count})      
+    id=database.prediction.insert_one({'inputImageUrl':_inputImageUrl,'outputImageUrl':_outputImageUrl,'count':_count})      
     resp=jsonify("sucess")
     print(id)
     return resp,200

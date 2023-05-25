@@ -17,10 +17,15 @@ class WidgetComponentUtill {
   static void displaysnackbar(
       {required BuildContext context, required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      // backgroundColor: Theme.of(context).primaryColorLight,
+      backgroundColor: Colors.brown,
       duration: const Duration(seconds: 2),
       content: Text(
         message,
-        style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
+        style: Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(color: Colors.white),
       ),
     ));
   }
