@@ -104,38 +104,38 @@ class ImageInputV2 extends StatelessWidget {
           },
           child: Consumer<ImageProviderr>(
             builder: (context, imageProviderr, child) {
-              return (imageProviderr.getSelectedImage != null)
-                  ? Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      elevation: 3,
-                      child: Container(
-                        width: 200,
-                        height: 120,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(width: 1, color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                          child: Image.file(
-                            File(imageProviderr.getSelectedImage!.path),
-                            fit: BoxFit.fill,
-                            errorBuilder: (BuildContext context, Object error,
-                                    StackTrace? stackTrace) =>
-                                const Center(
-                                    child: Text(
-                                        'This image type is not supported')),
-                          ),
-                        ),
-                      ),
-                    )
-                  : const Text(
-                      'Tap to select image',
-                      textAlign: TextAlign.center,
-                    );
+              return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                elevation: 3,
+                child: Container(
+                  width: 200,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(width: 1, color: Colors.grey),
+                  ),
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                      child: (imageProviderr.getSelectedImage != null)
+                          ? Image.file(
+                              File(imageProviderr.getSelectedImage!.path),
+                              fit: BoxFit.fill,
+                              errorBuilder: (BuildContext context, Object error,
+                                      StackTrace? stackTrace) =>
+                                  const Center(
+                                      child: Text(
+                                          'This image type is not supported')),
+                            )
+                          : Center(
+                              child: Text(
+                                'Tap to select image',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            )),
+                ),
+              );
             },
           ),
         ),
