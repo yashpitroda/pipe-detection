@@ -1,14 +1,9 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:pipe_detection_app/model/prediction.dart';
 
 import '../services/util.dart';
@@ -22,8 +17,12 @@ class PredictionProvider with ChangeNotifier {
 
   List<Prediction>? _predictionList;
 
-  Future<void> fetchAccount() async {
-    print("fetchAccount is call");
+  List<Prediction>? get getPredictionList {
+    return _predictionList == null ? null : [..._predictionList!];
+  }
+
+  Future<void> fetchPrediction() async {
+    print("fetchPrediction is call");
 
     final url = Uri.parse(Util.API_URL + "/fetchPrediction");
     final response = await http.post(
@@ -37,17 +36,15 @@ class PredictionProvider with ChangeNotifier {
       return;
     }
     final responseData = json.decode(response.body);
-    List responseSupplierDataList = responseData['payload'];
-    final List<Prediction> temp = [];
-    final stirngToDateTmeFormatter = DateFormat('EEE, d MMM yyyy HH:mm:ss');
+    final responseList = responseData["payload"];
 
-    responseSupplierDataList.forEach((element) {
+    final List<Prediction> temp = [];
+    responseList.forEach((element) {
       temp.add(Prediction(
-        remark: element['id'].toString(),
         id: element['id'].toString(),
-        inputUrl: element["inputUrl"].toString(),
-        outputUrl: element['outputUrl'].toString(),
-        date: stirngToDateTmeFormatter.parse(element["date"]),
+        inputImageUrl: element["inputImageUrl"].toString(),
+        outputImageUrl: element['outputImageUrl'].toString(),
+        date: DateTime.parse(element["date"].toString()),
         count: element['count'].toString(),
       ));
     });

@@ -6,6 +6,7 @@ import 'package:pipe_detection_app/firebase_options.dart';
 import 'package:pipe_detection_app/home_screen.dart';
 import 'package:pipe_detection_app/provider/analytics_provider.dart';
 import 'package:pipe_detection_app/provider/image_provider.dart';
+import 'package:pipe_detection_app/provider/prediction_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'palette.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
           create: (BuildContext ctx) => ImageProviderr(),
         ),
         ChangeNotifierProvider(
+          create: (BuildContext ctx) => PredictionProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (BuildContext ctx) => AnalyticsProvider(),
         ),
       ],
@@ -40,6 +44,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            dialogTheme: DialogTheme(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+            ),
             cardTheme: const CardTheme(
                 margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3)),
             primarySwatch: generateMaterialColor(Palette.primaryColor),
@@ -53,7 +61,10 @@ class MyApp extends StatelessWidget {
             ),
             scaffoldBackgroundColor: Palette.backgroundColor,
             textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-                .apply(bodyColor: Palette.fontBlackColor)
+                .apply(
+                  bodyColor: Palette.fontBlackColor,
+                  // fontFamily: "Oswald"
+                )
                 .copyWith(),
             appBarTheme: const AppBarTheme(
               elevation: 0.6,
@@ -79,7 +90,7 @@ class MyApp extends StatelessWidget {
           // ),
           home: HomeScreen(),
           routes: {
-            AnalyticsScreen.routeName: (context) =>  AnalyticsScreen(),
+            AnalyticsScreen.routeName: (context) => AnalyticsScreen(),
           }),
     );
   }

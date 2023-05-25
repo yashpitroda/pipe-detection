@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../services/util.dart';
 
@@ -140,6 +138,7 @@ class ImageProviderr with ChangeNotifier {
     }
     isUploadImageLoading = true;
     notifyListeners();
+    DateTime currDatetime = DateTime.now();
 
     //selectedImage upload on firebase
     String inputImageUrl =
@@ -156,7 +155,8 @@ class ImageProviderr with ChangeNotifier {
         {
           'inputImageUrl': inputImageUrl,
           'outputImageUrl': outputImageUrl,
-          "count": responseCount
+          "count": responseCount,
+          "date": currDatetime.toString()
         },
       ),
     );

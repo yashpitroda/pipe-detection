@@ -3,13 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pipe_detection_app/provider/analytics_provider.dart';
 import 'package:pipe_detection_app/provider/image_provider.dart';
+import 'package:pipe_detection_app/provider/prediction_provider.dart';
 import 'package:pipe_detection_app/services/widget_component_utill.dart';
 import 'package:provider/provider.dart';
 
 class AnalyticsScreen extends StatelessWidget {
-  TextEditingController remarkContlr=TextEditingController();
+  TextEditingController remarkContlr = TextEditingController();
   static const routeName = '/AnalyticsScreen';
-   AnalyticsScreen({Key? key}) : super(key: key);
+  AnalyticsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class AnalyticsScreen extends StatelessWidget {
                 preferredSize: const Size.fromHeight(170.0),
                 child: Container(
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                   child: Column(
                     children: [
                       Row(
@@ -214,15 +215,20 @@ class AnalyticsScreen extends StatelessWidget {
                                   listen: false)
                               .uploadImage()
                               .then((value) {
-                            Provider.of<AnalyticsProvider>(context,
+                            Provider.of<PredictionProvider>(context,
                                     listen: false)
-                                .changeIsInputImgSelected(newbool: false);
+                                .fetchPrediction()
+                                .then((value) {
+                              Provider.of<AnalyticsProvider>(context,
+                                      listen: false)
+                                  .changeIsInputImgSelected(newbool: false);
 
-                            Navigator.of(context).pop(true);
-                           
-                            WidgetComponentUtill.displaysnackbar(
-                                context: context,
-                                message: "Prediction is saved");
+                              Navigator.of(context).pop(true);
+
+                              WidgetComponentUtill.displaysnackbar(
+                                  context: context,
+                                  message: "Prediction is saved");
+                            });
                           });
                         },
                   icon: const Icon(Icons.save),

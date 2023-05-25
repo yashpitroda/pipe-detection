@@ -1,17 +1,16 @@
 class Prediction {
   String id;
-  String inputUrl;
-  String outputUrl;
+  String inputImageUrl;
+  String outputImageUrl;
   DateTime date;
   String count;
-  String? remark;
 
   Prediction(
       // this.remark,
-      {this.remark,
+      {
       required this.id,
-      required this.inputUrl,
-      required this.outputUrl,
+      required this.inputImageUrl,
+      required this.outputImageUrl,
       required this.date,
       required this.count});
 }
