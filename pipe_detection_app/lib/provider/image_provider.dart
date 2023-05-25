@@ -42,6 +42,7 @@ class ImageProviderr with ChangeNotifier {
     selectedImage = null;
     responseBase64Image = null;
     responseCount = null;
+    responseImage = null;
     notifyListeners();
   }
 

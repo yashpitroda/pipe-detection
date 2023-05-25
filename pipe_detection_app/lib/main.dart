@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                 .apply(bodyColor: Palette.fontBlackColor)
                 .copyWith(),
             appBarTheme: const AppBarTheme(
-              elevation: 0.4,
+              elevation: 0.6,
               backgroundColor: Colors.white,
               foregroundColor: Palette.blackColor,
             ),
