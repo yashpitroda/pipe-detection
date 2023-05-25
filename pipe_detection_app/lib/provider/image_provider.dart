@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
+import '../services/secrat/secret.dart';
 import '../services/util.dart';
 
 class ImageProviderr with ChangeNotifier {
@@ -75,7 +76,7 @@ class ImageProviderr with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final url = Uri.parse(Util.API_URL + "/detectPipe");
+    final url = Uri.parse(Secrets.API_URL + "/detectPipe");
 
     String base64imageStirng =
         await Util.imageToBase64String(img: selectedImage!);
@@ -147,7 +148,7 @@ class ImageProviderr with ChangeNotifier {
         base64imageStirng: responseBase64Image!);
 
     //now store in database
-    final url = Uri.parse(Util.API_URL + "/uploadImage");
+    final url = Uri.parse(Secrets.API_URL + "/uploadImage");
     final response = await http.post(
       url,
       headers: {"Content-Type": "application/json"},

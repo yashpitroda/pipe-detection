@@ -7,9 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 class Util {
-  static const API_URL =
-      "http://192.168.43.144:6000"; ////http://192.168.1.123:9000 //http://192.168.43.144:6000 //https://pipe-fpks.onrender.com
-
   static void removeFocus({required BuildContext context}) {
     //removeFocus -- remove keybord or all focusNode
     FocusScope.of(context).unfocus();

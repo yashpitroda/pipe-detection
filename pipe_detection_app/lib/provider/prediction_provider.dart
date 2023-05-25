@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:pipe_detection_app/model/prediction.dart';
+import 'package:pipe_detection_app/services/secrat/secret.dart';
 
 import '../services/util.dart';
 
@@ -24,7 +25,7 @@ class PredictionProvider with ChangeNotifier {
   Future<void> fetchPrediction() async {
     print("fetchPrediction is call");
 
-    final url = Uri.parse(Util.API_URL + "/fetchPrediction");
+    final url = Uri.parse(Secrets.API_URL + "/fetchPrediction");
     final response = await http.post(
       url,
       headers: {"Content-Type": "application/json"},
