@@ -109,18 +109,6 @@ class ImageInputV2 extends StatelessWidget {
               border: Border.all(width: 1, color: Colors.grey),
             ),
             child:
-                //  (seletedimg != null)
-                //     ? Image.file(
-                //         File(seletedimg.path),
-                //         errorBuilder: (BuildContext context, Object error,
-                //                 StackTrace? stackTrace) =>
-                //             const Center(
-                //                 child: Text('This image type is not supported')),
-                //       )
-                //     : const Text(
-                //         'Tap to select image',
-                //         textAlign: TextAlign.center,
-                //       ),
                 Consumer<ImageProviderr>(
               builder: (context, imageProviderr, child) {
                 return (imageProviderr.getSelectedImage != null)

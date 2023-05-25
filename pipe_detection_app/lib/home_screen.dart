@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pipe_detection_app/analytics_screen.dart';
 import 'package:pipe_detection_app/palette.dart';
 import 'package:pipe_detection_app/provider/image_provider.dart';
 import 'package:pipe_detection_app/widget/badge.dart';
@@ -30,8 +31,36 @@ class HomeScreen extends StatelessWidget {
   //   // });
   // }
 
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          AnalyticsScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        // const end = Offset(0.0, 1.0);
+        const begin = Offset(1, 0);
+
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    return 
+    
+    oldScaffold(context);
+  }
+
+  Scaffold oldScaffold(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -92,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                               Icons.delete,
                               color: Colors.red,
                             ),
-                            label: const Text("Delete"))
+                            label: const Text("Delete")),
                       ],
                     ),
                   ),
@@ -105,6 +134,15 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ListView(
           children: <Widget>[
+            OutlinedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(_createRoute());
+                },
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                label: const Text("pink")),
             Container(
               height: 300,
               width: 300,
