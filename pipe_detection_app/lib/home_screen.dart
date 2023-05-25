@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(126.0),
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: Row(
                   children: [
                     ImageInputV2(),

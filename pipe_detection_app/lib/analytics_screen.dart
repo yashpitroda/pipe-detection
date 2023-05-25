@@ -320,7 +320,7 @@ class inoutImageCard extends StatelessWidget {
                     child: Image.file(
                       // imageProviderr.getResponseImage!.path
                       File(fileImagePath),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       errorBuilder: (BuildContext context, Object error,
                               StackTrace? stackTrace) =>
                           const Center(
